@@ -9,7 +9,12 @@ public class Grid extends AbstractComponent {
 	// DataView which handles data
 	// ClientDataCommunicator which connects DataView to ServerDataCommunicator
 
-	public static class ColumnConfiguration {
+	public Column getColumn(Object propertyId) {
+		// FIXME
+		return null;
+	}
+
+	public static class Column {
 
 	}
 }

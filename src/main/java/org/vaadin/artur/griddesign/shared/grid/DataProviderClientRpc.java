@@ -1,4 +1,6 @@
-package org.vaadin.artur.griddesign.shared;
+package org.vaadin.artur.griddesign.shared.grid;
+
+import org.vaadin.artur.griddesign.shared.data.DataSourceData;
 
 import com.vaadin.shared.communication.ClientRpc;
 

@@ -1,9 +1,12 @@
-package org.vaadin.artur.griddesign.client.lowlevel;
+package org.vaadin.artur.griddesign.client.escalator;
 
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Widget;
 
-public interface Row {
+/**
+ * Representation of a cell in an {@link Escalator}
+ */
+public interface Cell {
 	public Escalator getEscalator();
 
 	/**
@@ -50,4 +53,13 @@ public interface Row {
 	 * @return
 	 */
 	public Element getElement();
+
+	/**
+	 * Checks if the cell is visible and contents should be rendered. A column
+	 * can be invisible for instance when the previous column has colspan > 1.
+	 * 
+	 * @return true if contents should be rendered in the cell, false otherwise
+	 */
+	public boolean isVisible();
+
 }

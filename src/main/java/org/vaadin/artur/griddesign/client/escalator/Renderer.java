@@ -1,4 +1,4 @@
-package org.vaadin.artur.griddesign.client.lowlevel;
+package org.vaadin.artur.griddesign.client.escalator;
 
 
 /**

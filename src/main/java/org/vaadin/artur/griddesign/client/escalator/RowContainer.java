@@ -1,9 +1,9 @@
-package org.vaadin.artur.griddesign.client.lowlevel;
+package org.vaadin.artur.griddesign.client.escalator;
 
-public interface RowContainer<T> {
-	public EscalatorUpdater<T> getEscalatorUpdater();
+public interface RowContainer {
+	public EscalatorUpdater getEscalatorUpdater();
 
-	public void setEscalatorUpdater(EscalatorUpdater<T> escalatorUpdater);
+	public void setEscalatorUpdater(EscalatorUpdater escalatorUpdater);
 
 	/**
 	 * Informs the widget that rows have been removed from the table.

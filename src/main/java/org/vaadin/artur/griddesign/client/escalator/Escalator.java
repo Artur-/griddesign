@@ -1,6 +1,11 @@
-package org.vaadin.artur.griddesign.client.lowlevel;
+package org.vaadin.artur.griddesign.client.escalator;
+
+import org.vaadin.artur.griddesign.client.escalator.event.RangeChangeHandler;
+import org.vaadin.artur.griddesign.client.escalator.event.ScrollEvent;
+import org.vaadin.artur.griddesign.client.escalator.event.ScrollHandler;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -16,7 +21,7 @@ import com.google.gwt.user.client.ui.Widget;
  * <li>Freeze columns for the 0-N first columns</li>
  * </ul>
  */
-public class Escalator<T> extends Widget {
+public class Escalator extends Widget {
 
 	/*
 	 * Out of scope for this:
@@ -31,15 +36,20 @@ public class Escalator<T> extends Widget {
 	 */
 	// Logical events
 
-	private RowContainer<T> header;
-	private RowContainer<T> body;
-	private RowContainer<T> footer;
+	private RowContainer header;
+	private RowContainer body;
+	private RowContainer footer;
 	private ColumnConfiguration columnConfiguration;
+	private RangeChangeHandler rangeChangeHandler = new DefaultEscalatorRangeChangeHandler();
 
 	// Create methods for row containers...
 
 	protected ColumnConfiguration createColumnConfiguration() {
 		return GWT.create(ColumnConfiguration.class);
+	}
+
+	public HandlerRegistration addScrollHandler(ScrollHandler scrollHandler) {
+		return addHandler(scrollHandler, ScrollEvent.getType());
 	}
 
 	/**
@@ -156,6 +166,10 @@ public class Escalator<T> extends Widget {
 	 */
 	public ColumnConfiguration getColumnConfiguration() {
 		return columnConfiguration;
+	}
+
+	public void setRangeChangeHandler(RangeChangeHandler rangeChangeHandler) {
+		this.rangeChangeHandler = rangeChangeHandler;
 	}
 
 }

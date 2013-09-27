@@ -1,4 +1,4 @@
-package org.vaadin.artur.griddesign;
+package org.vaadin.artur.griddesign.server;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,9 +10,11 @@ import java.util.Set;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.vaadin.artur.griddesign.shared.DataProviderClientRpc;
-import org.vaadin.artur.griddesign.shared.DataSourceData;
-import org.vaadin.artur.griddesign.shared.DataSourceServerRpc;
+import org.vaadin.artur.griddesign.client.rpc.RpcResult;
+import org.vaadin.artur.griddesign.shared.data.DataSourceData;
+import org.vaadin.artur.griddesign.shared.data.RowIdentifier;
+import org.vaadin.artur.griddesign.shared.grid.DataProviderClientRpc;
+import org.vaadin.artur.griddesign.shared.grid.DataSourceServerRpc;
 
 import com.vaadin.data.Container;
 import com.vaadin.data.Item;
@@ -50,8 +52,19 @@ public class DataProvider extends AbstractExtension {
 		registerRpc(new DataSourceServerRpc() {
 
 			@Override
-			public void requestData(int firstRow, int numberOfRows) {
-				sendData(firstRow, numberOfRows);
+			public RpcResult<DataSourceData> requestData(int firstRow,
+					int numberOfRows) {
+				DataSourceData data = null;
+				// DataSourceData data = fetchData(firstRow, numberOfRows);
+				return RpcResult.create(data);
+
+			}
+
+			@Override
+			public void updateClientCacheInfo(RowIdentifier firstRow,
+					int numberOfRows) {
+				// TODO Auto-generated method stub
+
 			}
 		});
 	}
@@ -113,7 +126,7 @@ public class DataProvider extends AbstractExtension {
 
 		data.rowDataAsJson = rowDataAsJson;
 
-		getRpcProxy(DataProviderClientRpc.class).receiveData(data);
+		getRpcProxy(DataProviderClientRpc.class).updateRows(data);
 	}
 
 	private Locale getLocale() {

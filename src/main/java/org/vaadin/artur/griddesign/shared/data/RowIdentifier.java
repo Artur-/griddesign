@@ -1,4 +1,4 @@
-package org.vaadin.artur.griddesign.shared;
+package org.vaadin.artur.griddesign.shared.data;
 
 public class RowIdentifier {
 	public int rowIndex;
