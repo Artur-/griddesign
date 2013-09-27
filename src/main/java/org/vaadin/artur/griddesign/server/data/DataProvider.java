@@ -1,4 +1,4 @@
-package org.vaadin.artur.griddesign.server;
+package org.vaadin.artur.griddesign.server.data;
 
 import java.util.ArrayList;
 import java.util.HashMap;

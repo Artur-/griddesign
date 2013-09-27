@@ -5,7 +5,7 @@ import org.vaadin.artur.griddesign.client.data.DataSourceCallback;
 import org.vaadin.artur.griddesign.client.data.HasDataContainer;
 import org.vaadin.artur.griddesign.client.rpc.RpcCallback;
 import org.vaadin.artur.griddesign.client.rpc.RpcResult;
-import org.vaadin.artur.griddesign.server.DataProvider;
+import org.vaadin.artur.griddesign.server.data.DataProvider;
 import org.vaadin.artur.griddesign.shared.data.DataSourceData;
 import org.vaadin.artur.griddesign.shared.grid.DataProviderClientRpc;
 import org.vaadin.artur.griddesign.shared.grid.DataSourceServerRpc;
