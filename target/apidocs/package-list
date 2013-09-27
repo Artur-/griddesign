@@ -1,0 +1,11 @@
+com.vaadin.data
+org.vaadin.artur.griddesign
+org.vaadin.artur.griddesign.client.data
+org.vaadin.artur.griddesign.client.data.impl
+org.vaadin.artur.griddesign.client.escalator
+org.vaadin.artur.griddesign.client.escalator.event
+org.vaadin.artur.griddesign.client.grid
+org.vaadin.artur.griddesign.client.rpc
+org.vaadin.artur.griddesign.server.data
+org.vaadin.artur.griddesign.shared.data
+org.vaadin.artur.griddesign.shared.grid
