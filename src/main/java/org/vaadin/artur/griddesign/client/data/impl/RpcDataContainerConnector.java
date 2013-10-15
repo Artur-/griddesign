@@ -1,51 +1,41 @@
 package org.vaadin.artur.griddesign.client.data.impl;
 
 import org.vaadin.artur.griddesign.client.data.DataContainer;
-import org.vaadin.artur.griddesign.client.data.DataSourceCallback;
 import org.vaadin.artur.griddesign.client.data.HasDataContainer;
-import org.vaadin.artur.griddesign.client.rpc.RpcCallback;
-import org.vaadin.artur.griddesign.client.rpc.RpcResult;
-import org.vaadin.artur.griddesign.server.data.DataProvider;
+import org.vaadin.artur.griddesign.server.data.ContainerDataProvider;
 import org.vaadin.artur.griddesign.shared.data.DataSourceData;
 import org.vaadin.artur.griddesign.shared.grid.DataProviderClientRpc;
-import org.vaadin.artur.griddesign.shared.grid.DataSourceServerRpc;
 
 import com.google.gwt.json.client.JSONArray;
 import com.vaadin.client.ServerConnector;
 import com.vaadin.client.extensions.AbstractExtensionConnector;
 import com.vaadin.shared.ui.Connect;
 
-@Connect(DataProvider.class)
+@Connect(ContainerDataProvider.class)
 public class RpcDataContainerConnector extends AbstractExtensionConnector {
 
 	private DataContainer<JSONArray> dataContainer = new DataContainer<JSONArray>() {
-
-		@Override
-		public void setRange(final int firstIndex, final int lastIndex,
-				final DataSourceCallback dataSourceCallback) {
-			RpcResult<DataSourceData> result = getRpcProxy(
-					DataSourceServerRpc.class).requestData(firstIndex,
-					lastIndex - firstIndex + 1);
-			result.addCallback(new RpcCallback<DataSourceData>() {
-				@Override
-				public void onResult(DataSourceData result) {
-					// Data received from the server
-
-					// TODO store in cache
-
-					int numberOfReturnedRows = ((JSONArray) result.rowDataAsJson)
-							.size();
-					dataSourceCallback.dataAvailable(result.firstRow,
-							result.firstRow + numberOfReturnedRows);
-				}
-			});
-		}
-
-		@Override
-		public boolean hasData(int rowIndex) {
-			// TODO Auto-generated method stub
-			return false;
-		}
+		//
+		// @Override
+		// public void setRange(final int firstIndex, final int lastIndex,
+		// final DataSourceCallback dataSourceCallback) {
+		// RpcResult<DataSourceData> result = getRpcProxy(
+		// DataProviderServerRpc.class).requestData(firstIndex,
+		// lastIndex - firstIndex + 1);
+		// result.addCallback(new RpcCallback<DataSourceData>() {
+		// @Override
+		// public void onResult(DataSourceData result) {
+		// // Data received from the server
+		//
+		// // TODO store in cache
+		//
+		// int numberOfReturnedRows = ((JSONArray) result.rowDataAsJson)
+		// .size();
+		// dataSourceCallback.dataAvailable(result.firstRow,
+		// result.firstRow + numberOfReturnedRows);
+		// }
+		// });
+		// }
 
 		@Override
 		public JSONArray getRow(int rowIndex) {
@@ -57,6 +47,12 @@ public class RpcDataContainerConnector extends AbstractExtensionConnector {
 		public int getEstimatedSize() {
 			// TODO Auto-generated method stub
 			return 0;
+		}
+
+		@Override
+		public void ensureAvailability(int firstIndex, int lastIndex) {
+			// TODO Auto-generated method stub
+
 		}
 	};
 

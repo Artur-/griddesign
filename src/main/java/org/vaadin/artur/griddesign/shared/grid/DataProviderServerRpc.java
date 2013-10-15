@@ -7,7 +7,7 @@ import org.vaadin.artur.griddesign.shared.data.RowIdentifier;
 import com.vaadin.shared.annotations.Delayed;
 import com.vaadin.shared.communication.ServerRpc;
 
-public interface DataSourceServerRpc extends ServerRpc {
+public interface DataProviderServerRpc extends ServerRpc {
 
 	/**
 	 * Called by the client DataProvider whenever the rows it has cached changes
